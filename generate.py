@@ -1,6 +1,5 @@
 import os
 import json
-import pdb
 
 def h1(content):
     return "<h1>" + content + "</h1>"
@@ -23,8 +22,16 @@ def genIndex():
     if not os.path.exists("public/posts"):
         os.mkdir("public/posts")
 
+
+    siteInfo = open('site.json')
+    data = json.load(siteInfo)
+
+    print(data)
+
+    
+
     index = open(output + "index.html", "w")
-    index.write(h1("Zach Hall - I write sometimes"))
+    index.write(h1(data["site-name"]))
     
     for filename in os.listdir("markdown"):
         index.write("\n")
