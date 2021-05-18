@@ -1,6 +1,9 @@
 import os
 import json
 
+postDir = "posts/"
+output = "public/"
+
 def h1(content):
     return "<h1>" + content + "</h1>"
 
@@ -15,20 +18,9 @@ def blogPost(name, content, postDir):
     tPost.write("<a href='../index.html'>Index</a>")
 
 def genIndex():
-    postDir = "posts/"
-    output = "public/"
-    if not os.path.exists("public"):
-        os.mkdir("public")
-    if not os.path.exists("public/posts"):
-        os.mkdir("public/posts")
-
 
     siteInfo = open('site.json')
     data = json.load(siteInfo)
-
-    print(data)
-
-    
 
     index = open(output + "index.html", "w")
     index.write(h1(data["site-name"]))
@@ -44,7 +36,15 @@ def genIndex():
         temp.close()
 
 
+def main():
+ 
+    if not os.path.exists("public"):
+        os.mkdir("public")
+    if not os.path.exists("public/posts"):
+        os.mkdir("public/posts")
+
+    genIndex()
 
 
 
-genIndex()
+main()
