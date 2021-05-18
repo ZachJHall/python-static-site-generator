@@ -14,9 +14,7 @@ def blogPost(name, content, postDir):
 
     Post = open(postDir + name+".html", "w")
     Post.write("<header>")
-    Post.write("\b")
-    Post.write("<title>" + siteInfo["site-name"] + "</title>" )
-    Post.write("\b")
+    Post.write("<title>" + siteInfo["site-name"] + " | " + name + "</title>" )
     Post.write("</header>")
 
     Post.write("<h1>" + name + "</h1>")
