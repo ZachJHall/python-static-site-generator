@@ -12,18 +12,21 @@ def a(src, content):
 
 def blogPost(name, content, postDir):
 
-    tPost = open(postDir + name+".html", "w")
-    tPost.write("<h1>" + name + "</h1>")
-    tPost.write("<p>" + content + "</p>")
-    tPost.write("<a href='../index.html'>Index</a>")
+    Post = open(postDir + name+".html", "w")
+    Post.write("<header>")
+    Post.write("\b")
+    Post.write("<title>" + siteInfo["site-name"] + "</title>" )
+    Post.write("\b")
+    Post.write("</header>")
+
+    Post.write("<h1>" + name + "</h1>")
+    Post.write("<p>" + content + "</p>")
+    Post.write("<a href='../index.html'>Index</a>")
 
 def genIndex():
 
-    siteInfo = open('site.json')
-    data = json.load(siteInfo)
-
     index = open(output + "index.html", "w")
-    index.write(h1(data["site-name"]))
+    index.write(h1(siteInfo["site-name"]))
     
     for filename in os.listdir("markdown"):
         index.write("\n")
@@ -34,6 +37,11 @@ def genIndex():
 
         index.write( a(postDir + filename[:-4]+".html", filename[:-4]) + "\b")
         temp.close()
+
+def getSiteInfo():
+    siteInfo = open('site.json')
+    return json.load(siteInfo)
+
 
 
 def main():
@@ -46,5 +54,5 @@ def main():
     genIndex()
 
 
-
+siteInfo = getSiteInfo()
 main()
