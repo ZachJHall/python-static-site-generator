@@ -3,7 +3,7 @@
 A static site generator I thought I would build for fun.  
 
 It needs a lot of work.
-
+jk
 Live [site](https://python-static-test.netlify.app/).
 
 
@@ -12,3 +12,4 @@ Live [site](https://python-static-test.netlify.app/).
 - [X] Add index template file
 - [ ] Add post template file
 - [ ] Add markdown parsing
+- [ ] Move templates into template folder
