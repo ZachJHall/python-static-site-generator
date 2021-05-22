@@ -3,7 +3,7 @@
 A static site generator I thought I would build for fun.  
 
 It needs a lot of work.
-jk
+
 Live [site](https://python-static-test.netlify.app/).
 
 
