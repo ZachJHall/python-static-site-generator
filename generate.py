@@ -11,15 +11,14 @@ def a(src, content):
     return "<a href=" + src + ">" + content + "</a>"
 
 def blogPost(name, content, postDir):
-
-    Post = open(postDir + name+".html", "w")
-    Post.write("<header>")
-    Post.write("<title>" + siteInfo["site-name"] + " | " + name + "</title>" )
-    Post.write("</header>")
-
-    Post.write("<h1>" + name + "</h1>")
-    Post.write("<p>" + content + "</p>")
-    Post.write("<a href='../index.html'>Index</a>")
+	with open('post.html', 'r') as postTemplate, open(postDir +name + ".html", "w") as Post:
+    	
+		for line in postTemplate:
+			if(line.strip('\n') == "[content]"):
+				Post.write("<h1>" + name  + "</h1>")
+				Post.write("<p>" + content + "<p>")
+			else:
+				Post.write(line)
 
 def genIndex():
     with open('index.html', 'r') as indexTemplate, open(output + "index.html", 'w') as index:
