@@ -22,19 +22,17 @@ def blogPost(name, content, postDir):
     Post.write("<a href='../index.html'>Index</a>")
 
 def genIndex():
-
-    index = open(output + "index.html", "w")
-    index.write(h1(siteInfo["site-name"]))
-    
-    for filename in os.listdir("markdown"):
-        index.write("\n")
-
-
-        temp = open("markdown/" + filename)
-        blogPost(filename[:-4], temp.read(), output + postDir)
-
-        index.write( a(postDir + filename[:-4]+".html", filename[:-4]) + "\b")
-        temp.close()
+    with open('index.html', 'r') as indexTemplate, open(output + "index.html", 'w') as index:
+        for line in indexTemplate:
+            if(line.strip('\n') == "[content]"):
+                for filename in os.listdir("markdown"):
+                    index.write('\n')
+                    temp = open("markdown/" + filename)
+                    blogPost(filename[:-4], temp.read(), output + postDir)
+                    index.write( a(postDir + filename[:-4]+".html", filename[:-4]) + "\b")
+                    temp.close()
+            else:
+                index.write(line)
 
 def getSiteInfo():
     siteInfo = open('site.json')
