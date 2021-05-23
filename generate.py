@@ -11,7 +11,7 @@ def a(src, content):
     return "<a href=" + src + ">" + content + "</a>"
 
 def blogPost(name, content, postDir):
-	with open('post.html', 'r') as postTemplate, open(postDir +name + ".html", "w") as Post:
+	with open('./templates/post.html', 'r') as postTemplate, open(postDir +name + ".html", "w") as Post:
     	
 		for line in postTemplate:
 			if(line.strip('\n') == "[content]"):
