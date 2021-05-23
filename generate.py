@@ -21,7 +21,7 @@ def blogPost(name, content, postDir):
 				Post.write(line)
 
 def genIndex():
-    with open('index.html', 'r') as indexTemplate, open(output + "index.html", 'w') as index:
+    with open('./templates/index.html', 'r') as indexTemplate, open(output + "index.html", 'w') as index:
         for line in indexTemplate:
             if(line.strip('\n') == "[content]"):
                 for filename in os.listdir("markdown"):
