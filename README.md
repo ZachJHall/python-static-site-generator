@@ -11,5 +11,5 @@ Live [site](https://python-static-test.netlify.app/).
 - [X] Pull and generate html files from textfiles
 - [X] Add index template file
 - [X] Add post template file
-- [ ] Add markdown parsing
+- [X] Add markdown parsing
 - [ ] Move templates into template folder
