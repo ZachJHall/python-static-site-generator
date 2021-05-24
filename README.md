@@ -4,7 +4,7 @@ A static site generator I thought I would build for fun.
 
 It needs a lot of work.
 
-Live [site](https://python-static-test.netlify.app/).
+Live [site](https://python-static-test.netlify.app/). - Currently not working
 
 
 # Task List
