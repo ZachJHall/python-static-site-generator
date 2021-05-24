@@ -19,3 +19,5 @@ You can easily get the site going by pointing netlify at your own copy of this r
 - [X] Add post template file
 - [X] Add markdown parsing
 - [X] Move templates into template folder
+- [ ] Add page that displays all articles according to original date published
+- [ ] Style index, post, and allPosts pages
