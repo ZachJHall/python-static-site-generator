@@ -34,12 +34,6 @@ def genIndex():
             else:
                 index.write(line)
 
-def getSiteInfo():
-    siteInfo = open('site.json')
-    return json.load(siteInfo)
-
-
-
 def main():
  
     if not os.path.exists("public"):
@@ -50,5 +44,4 @@ def main():
     genIndex()
 
 
-siteInfo = getSiteInfo()
 main()
