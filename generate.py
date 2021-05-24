@@ -1,5 +1,6 @@
 import os
 import json
+import markdown
 
 postDir = "posts/"
 output = "public/"
@@ -16,7 +17,7 @@ def blogPost(name, content, postDir):
 		for line in postTemplate:
 			if(line.strip('\n') == "[content]"):
 				Post.write("<h1>" + name  + "</h1>")
-				Post.write("<p>" + content + "<p>")
+				Post.write(markdown.markdown(content))
 			else:
 				Post.write(line)
 
