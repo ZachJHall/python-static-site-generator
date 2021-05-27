@@ -1,10 +1,10 @@
 import os
 import json
 import markdown
+import frontmatter
 
 postDir = "posts/"
 output = "public/"
-posts = os.listdir("markdown")
 
 def h1(content):
     return "<h1>" + content + "</h1>"
@@ -12,28 +12,29 @@ def h1(content):
 def a(src, content):
     return "<a href=" + src + ">" + content + "</a>"
 
-def blogPost(name, content, postDir):
-	with open('./templates/post.html', 'r') as postTemplate, open(postDir +name + ".html", "w") as Post:
-    	
-		for line in postTemplate:
-			if(line.strip('\n') == "[content]"):
-				Post.write("<h1>" + name  + "</h1>")
-				Post.write(markdown.markdown(content))
-			else:
-				Post.write(line)
+def extractPosts():
+    posts = [] 
+    for post in os.listdir('markdown'):
+        frontPost = frontmatter.load('markdown/' + post)
+        
+        fileName = post
+        title = frontPost['title']
+        author = frontPost['author']
+        date = frontPost['date']
+        content = frontPost.content
+        posts.append((fileName, title, author, date, content))
+
+    return posts
 
 def genPosts():
-	for post in posts:
-		name = post[0]
-
-		with open('./templates/post.html', 'r') as postTemplate, open(output+postDir +name + ".html", "w") as postOutput:
-		
-			for line in postTemplate:
-				if(line.strip('\n') == "[content]"):
-					postOutput.write("<h1>" + name  + "</h1>")
-					#Post.write(markdown.markdown(content))
-				else:
-					postOutput.write(line)
+    for post in posts:
+        with open('./templates/post.html', 'r') as postTemplate, open(output+postDir + post[0][0] + ".html", "w") as postOutput:
+            for line in postTemplate:
+                if(line.strip('\n') == "[content]"):
+                    postOutput.write("<h1>" + post[1]  + "</h1>")
+                    postOutput.write(markdown.markdown(post[4]))
+                else:
+                    postOutput.write(line)
 def genIndex():
     with open('./templates/index.html', 'r') as indexTemplate, open(output + "index.html", 'w') as index:
         for line in indexTemplate:
@@ -53,5 +54,5 @@ def main():
     genPosts()
     genIndex()
 
+posts = extractPosts()
 main()
-print(posts)
