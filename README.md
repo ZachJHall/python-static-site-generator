@@ -21,3 +21,4 @@ You can easily get the site going by pointing netlify at your own copy of this r
 - [X] Move templates into template folder
 - [ ] Add page that displays all articles according to original date published
 - [ ] Style index, post, and allPosts pages
+- [ ] Order posts in array by publish date
