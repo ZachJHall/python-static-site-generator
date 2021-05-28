@@ -53,5 +53,6 @@ def main():
     genPosts()
     genIndex()
 
-posts = extractPosts()
+posts = sorted(extractPosts())
 main()
+print(posts)
