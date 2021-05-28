@@ -41,8 +41,7 @@ def genIndex():
             if(line.strip('\n') == "[content]"):
                 index.write('\n')
                 for file in posts[-3:]:
-                    index.write( a(postDir + file[0][0] + ".html", file[1]) + "\b")
-                    index.write('\n')
+                    index.write( a(postDir + file[0][0] + ".html", file[1]) + "<br>")
             else:
                 index.write(line)
     
