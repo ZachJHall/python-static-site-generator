@@ -55,4 +55,3 @@ def main():
 
 posts = sorted(extractPosts())
 main()
-print(posts)
