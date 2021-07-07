@@ -10,7 +10,7 @@ def h1(content):
     return "<h1>" + content + "</h1>"
 
 def a(src, content):
-    return "<a href=" + src + ">" + content + "</a>"
+    return '<a href="' + src + '">' + content + "</a>"
 
 def extractPosts():
     posts = [] 
